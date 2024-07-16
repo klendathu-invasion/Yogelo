@@ -1,0 +1,32 @@
+services:
+  db:
+    image: postgres
+    volumes:
+      - ../db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+  redis:
+    image: redis
+    command: redis-server
+    volumes:
+      - 'redis:/data'
+  web:
+    build: .
+    command: bash -c "./scripts/run.sh"
+    volumes:
+      - .:/myapp
+    ports:
+      - "3002:3000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      - REDIS_URL_CACHING=redis://redis:6379/0
+      - REDIS_URL=redis://redis:6379/1
+      - POSTGRES_HOST=db
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=password
+
+volumes:
+  redis:
+  postgres:

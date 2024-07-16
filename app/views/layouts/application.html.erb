@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Yogelo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <script type="text/javascript">
+      $(document).on('click', 'a[href^="#"]', function (event) {
+          event.preventDefault();
+
+          $('html, body').animate({
+              scrollTop: $($.attr(this, 'href')).offset().top
+          }, 9500);
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="menu">
+      <ul>
+        <li class="home"><%= link_to "MON PARCOURS", "#home" %></li>
+        <li><%= link_to "COURS", "#cours" %></li>
+        <li><%= link_to "LE YOGA", "#yoga" %></li>
+        <li><%= link_to "PLANNING", "#planning" %></li>
+
+      </ul>
+    </div>
+
+    <%= yield %>
+  </body>
+</html>
