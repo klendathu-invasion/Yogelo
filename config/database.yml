@@ -20,4 +20,4 @@ development:
 
 test:
   <<: *default
-  database: <%= "#{ENV["POSTGRES_DATABASE_TEST"] || 'db_poke_server_test'}#{ENV['TEST_ENV_NUMBER']}"  %>
+  database: <%= "#{ENV["POSTGRES_DATABASE_TEST"] || 'db_yogelo_test'}#{ENV['TEST_ENV_NUMBER']}"  %>

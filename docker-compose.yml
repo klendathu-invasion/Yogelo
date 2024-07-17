@@ -1,10 +1,4 @@
 services:
-  db:
-    image: postgres
-    volumes:
-      - ../db:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: password
   redis:
     image: redis
     command: redis-server
@@ -18,15 +12,19 @@ services:
     ports:
       - "3002:3000"
     depends_on:
-      - db
       - redis
     environment:
       - REDIS_URL_CACHING=redis://redis:6379/0
       - REDIS_URL=redis://redis:6379/1
-      - POSTGRES_HOST=db
+      - POSTGRES_HOST=database_container
       - POSTGRES_USERNAME=postgres
       - POSTGRES_PASSWORD=password
+      - POSTGRES_DATABASE=yogelo
 
 volumes:
   redis:
-  postgres:
+
+networks:
+  default:
+    name: database_network
+    external: true
