@@ -1,6 +1,5 @@
 #!/bin/bash
-cd /root/poke_server_$@
-git checkout $@
+cd /home/docker_klendathu/Yogelo
 docker-compose down
 rm -f tmp/pids/server.pid
 git pull -r
