@@ -1,0 +1,321 @@
+<!-- app/views/home/cours.html.erb -->
+<section class="cours-hero">
+    <div class="container">
+        <h1 class="cours-hero__title">Nos cours de yoga</h1>
+        <p class="cours-hero__subtitle">Explorez notre variété de cours adaptés à tous les niveaux et besoins</p>
+    </div>
+</section>
+
+<section class="cours-intro">
+    <div class="container">
+        <div class="cours-intro__content">
+            <h2 class="section-title centered">Une pratique pour chaque besoin</h2>
+            <p>Que vous cherchiez à vous détendre, à gagner en force et en souplesse, ou à approfondir votre pratique, vous trouverez un cours qui correspond à vos attentes. Chaque séance est conçue pour vous permettre de progresser à votre rythme dans une ambiance bienveillante.</p>
+            <p>Les cours sont limités à 10 personnes maximum pour assurer un accompagnement personnalisé.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cours-details" id="details">
+    <div class="container">
+        <h2 class="section-title centered">Détail des cours</h2>
+        
+        <div class="cours-cards">
+            <article class="cours-card" id="hatha">
+                <div class="cours-card__image">
+                    <img src="/images/course-hatha.jpg" alt="Cours de Hatha Yoga" width="400" height="300">
+                </div>
+                <div class="cours-card__content">
+                    <span class="cours-badge">Tous niveaux</span>
+                    <h3 class="cours-card__title">Hatha Yoga</h3>
+                    <p class="cours-card__description">Le Hatha Yoga est la forme traditionnelle du yoga qui se concentre sur l'équilibre entre le corps et l'esprit à travers des postures (asanas), des exercices de respiration (pranayama) et de la méditation.</p>
+                    <div class="cours-card__details">
+                        <div class="detail-item">
+                            <span class="detail-icon">⏱️</span>
+                            <span class="detail-text">75 minutes</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">📅</span>
+                            <span class="detail-text">Mercredi 12h</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">💶</span>
+                            <span class="detail-text">15€ / cours</span>
+                        </div>
+                    </div>
+                    <a href="#reservation" class="btn btn--small btn--reserve" data-cours="Hatha Yoga">Réserver</a>
+                </div>
+            </article>
+            
+            <article class="cours-card" id="vinyasa">
+                <div class="cours-card__image">
+                    <img src="/images/course-vinyasa.jpg" alt="Cours de Vinyasa Flow" width="400" height="300">
+                </div>
+                <div class="cours-card__content">
+                    <span class="cours-badge">Intermédiaire</span>
+                    <h3 class="cours-card__title">Vinyasa Flow</h3>
+                    <p class="cours-card__description">Le Vinyasa est un style de yoga dynamique où les mouvements sont synchronisés avec la respiration. Les enchaînements fluides créent une "danse méditative" qui développe force, souplesse et concentration.</p>
+                    <div class="cours-card__details">
+                        <div class="detail-item">
+                            <span class="detail-icon">⏱️</span>
+                            <span class="detail-text">75 minutes</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">📅</span>
+                            <span class="detail-text">Dimanche 10h</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">💶</span>
+                            <span class="detail-text">15€ / cours</span>
+                        </div>
+                    </div>
+                    <a href="#reservation" class="btn btn--small btn--reserve" data-cours="Vinyasa Flow">Réserver</a>
+                </div>
+            </article>
+            
+            <article class="cours-card" id="yin">
+                <div class="cours-card__image">
+                    <img src="/images/course-yin.jpg" alt="Cours de Yin Yoga" width="400" height="300">
+                </div>
+                <div class="cours-card__content">
+                    <span class="cours-badge">Tous niveaux</span>
+                    <h3 class="cours-card__title">Yin Yoga</h3>
+                    <p class="cours-card__description">Le Yin Yoga est une pratique méditative où les postures sont maintenues plusieurs minutes. Ce yoga doux et profond cible les tissus conjonctifs et permet un relâchement total du corps et de l'esprit.</p>
+                    <div class="cours-card__details">
+                        <div class="detail-item">
+                            <span class="detail-icon">⏱️</span>
+                            <span class="detail-text">75 minutes</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">📅</span>
+                            <span class="detail-text">Samedi 18h</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">💶</span>
+                            <span class="detail-text">15€ / cours</span>
+                        </div>
+                    </div>
+                    <a href="#reservation" class="btn btn--small btn--reserve" data-cours="Yin Yoga">Réserver</a>
+                </div>
+            </article>
+            
+            <article class="cours-card" id="yinyang">
+                <div class="cours-card__image">
+                    <img src="/images/course-yin.jpg" alt="Cours de Yin Yang Yoga" width="400" height="300">
+                </div>
+                <div class="cours-card__content">
+                    <span class="cours-badge">Tous niveaux</span>
+                    <h3 class="cours-card__title">Yin Yang Yoga</h3>
+                    <p class="cours-card__description">Le Yin Yang Yoga combine la pratique dynamique du Yang (Vinyasa) avec la pratique passive du Yin. La première partie du cours est énergique, tandis que la seconde est dédiée à un relâchement profond.</p>
+                    <div class="cours-card__details">
+                        <div class="detail-item">
+                            <span class="detail-icon">⏱️</span>
+                            <span class="detail-text">90 minutes</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">📅</span>
+                            <span class="detail-text">Mardi 19h</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">💶</span>
+                            <span class="detail-text">18€ / cours</span>
+                        </div>
+                    </div>
+                    <a href="#reservation" class="btn btn--small btn--reserve" data-cours="Yin Yang Yoga">Réserver</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="tarifs" id="tarifs">
+    <div class="container">
+        <h2 class="section-title centered">Nos formules</h2>
+        
+        <div class="tarifs-grid">
+            <div class="tarif-card">
+                <div class="tarif-card__header">
+                    <h3 class="tarif-card__title">Cours à l'unité</h3>
+                    <p class="tarif-card__price">15€</p>
+                </div>
+                <div class="tarif-card__content">
+                    <ul class="tarif-card__features">
+                        <li>Accès à tous les cours</li>
+                        <li>Réservation 24h à l'avance</li>
+                        <li>Sans engagement</li>
+                    </ul>
+                    <a href="#reservation" class="btn">Réserver un cours</a>
+                </div>
+            </div>
+            
+            <div class="tarif-card tarif-card--featured">
+                <div class="tarif-card__header">
+                    <h3 class="tarif-card__title">Carte 10 cours</h3>
+                    <p class="tarif-card__price">120€</p>
+                    <p class="tarif-card__discount">Économisez 30€</p>
+                </div>
+                <div class="tarif-card__content">
+                    <ul class="tarif-card__features">
+                        <li>Valable 3 mois</li>
+                        <li>Accès prioritaire aux réservations</li>
+                        <li>1 cours offert avec un(e) ami(e)</li>
+                    </ul>
+                    <a href="/contact" class="btn">Nous contacter</a>
+                </div>
+            </div>
+            
+            <div class="tarif-card">
+                <div class="tarif-card__header">
+                    <h3 class="tarif-card__title">Cours privés</h3>
+                    <p class="tarif-card__price">60€</p>
+                </div>
+                <div class="tarif-card__content">
+                    <ul class="tarif-card__features">
+                        <li>Programme personnalisé</li>
+                        <li>Horaires flexibles</li>
+                        <li>À domicile ou en studio</li>
+                    </ul>
+                    <a href="/contact" class="btn">Nous contacter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cours-info">
+    <div class="container">
+        <div class="cours-info__grid">
+            <div class="cours-info__block">
+                <h2 class="section-title centered">Ce que vous devez savoir</h2>
+                <div class="info-item" style="display: block;">
+                    <h3 class="info-title"><i class="info-icon">🧘‍♀️</i> Équipement</h3>
+                    <p>Apportez votre tapis de yoga si vous en avez un. Quelques tapis sont disponibles en prêt. Portez des vêtements confortables qui permettent de bouger librement.</p>
+                </div>
+                <div class="info-item" style="display: block;">
+                    <h3 class="info-title"><i class="info-icon">🕐</i> Ponctualité</h3>
+                    <p>Merci d'arriver 10 minutes avant le début du cours. Pour le respect de tous, les retardataires ne pourront pas être admis au-delà de 5 minutes après le début.</p>
+                </div>
+                <div class="info-item" style="display: block;">
+                    <h3 class="info-title"><i class="info-icon">🚫</i> Annulation</h3>
+                    <p>Toute annulation doit être faite au moins 24h à l'avance pour obtenir un remboursement ou un report.</p>
+                </div>
+            </div>
+            
+            <div class="cours-info__block">
+                <img src="/images/course-vinyasa.jpg" alt="Accessoires de yoga" class="cours-info__image">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="reservation" id="reservation">
+    <div class="container">
+        <h2 class="section-title centered">Réservez votre cours</h2>
+        
+        <div class="reservation-grid">
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button class="calendar-nav prev-month" aria-label="Mois précédent">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <h3 class="calendar-title"></h3>
+                    <button class="calendar-nav next-month" aria-label="Mois suivant">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="calendar-grid"></div>
+            </div>
+            
+            <div class="calendar-details">
+                <div class="selected-date-info">
+                    <p>Sélectionnez une date pour voir les cours disponibles</p>
+                </div>
+                <div class="available-classes hidden">
+                    <h4>Cours disponibles :</h4>
+                    <ul class="class-list"></ul>
+                </div>
+                <div class="booking-form hidden">
+                    <h4>Réserver votre place</h4>
+                    <form id="booking-form">
+                        <input type="hidden" id="selected-date" name="selected_date">
+                        <input type="hidden" id="selected-class" name="selected_class">
+                        
+                        <div class="form-group">
+                            <label for="booking-name" class="form-label">Nom</label>
+                            <input type="text" id="booking-name" name="name" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="booking-email" class="form-label">Email</label>
+                            <input type="email" id="booking-email" name="email" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="booking-phone" class="form-label">Téléphone</label>
+                            <input type="tel" id="booking-phone" name="phone" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group form-policy">
+                            <input type="checkbox" id="booking-policy" name="policy" class="form-checkbox" required>
+                            <label for="booking-policy" class="form-checkbox-label">J'accepte que mes données soient traitées pour la réservation</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn--full">Confirmer la réservation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="faq" id="faq">
+    <div class="container">
+        <h2 class="section-title centered">Questions fréquentes</h2>
+        
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">
+                    Je suis débutant(e), quel cours me recommandez-vous ?
+                    <span class="faq-icon"></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Pour les débutants, je recommande le Hatha Yoga qui offre une introduction douce aux postures de base et à la respiration. Le Yin Yoga est également excellent pour commencer, car il est accessible à tous les niveaux et permet de découvrir son corps en douceur.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Faut-il être souple pour pratiquer le yoga ?
+                    <span class="faq-icon"></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolument pas ! Le yoga est justement une pratique qui vous aidera à gagner en souplesse progressivement. Chaque posture peut être adaptée à votre niveau actuel. N'oubliez pas que le yoga n'est pas une compétition, mais un cheminement personnel.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Que dois-je apporter pour un cours de yoga ?
+                    <span class="faq-icon"></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Idéalement, apportez votre tapis de yoga, une bouteille d'eau et portez des vêtements confortables qui vous permettent de bouger librement. Si vous n'avez pas de tapis, nous en avons quelques-uns disponibles en prêt. Vous pouvez également apporter une serviette et éventuellement un petit coussin pour votre confort.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Combien de temps faut-il pour voir des résultats ?
+                    <span class="faq-icon"></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Les bénéfices du yoga peuvent se faire sentir dès la première séance au niveau de la détente et de la réduction du stress. Pour des changements plus profonds (souplesse, force, posture), une pratique régulière de 2-3 fois par semaine pendant quelques semaines commence à montrer des résultats visibles. Chaque personne est différente, l'important est la régularité plus que l'intensité.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -56,47 +56,6 @@
         "openingHours": "Mo-Fr 09:00-20:00"
       }
       </script>
-      <script type="text/javascript">
-        
-        $(document).ready(function() {
-          // Toggle mobile menu
-          $('.nav__toggle').on('click', function() {
-            if ($('.nav__menu').hasClass('nav__menu--open')) {
-              // Close menu
-              $('.nav__menu').addClass('nav__menu--closing');
-              setTimeout(function() {
-                $('.nav__menu').removeClass('nav__menu--open nav__menu--closing');
-              }, 300);
-              $('.nav__toggle').attr('aria-expanded', 'false');
-              $('.nav__toggle-bar').removeClass('nav__toggle-bar--active');
-              $('body').removeClass('menu-open');
-            } else {
-              // Open menu
-              $('.nav__menu').addClass('nav__menu--open');
-              $('.nav__toggle').attr('aria-expanded', 'true');
-              $('.nav__toggle-bar').addClass('nav__toggle-bar--active');
-              $('body').addClass('menu-open');
-            }
-          });
-          
-          // Close menu when clicking outside
-          $(document).on('click', function(event) {
-            if ($('.nav__menu').hasClass('nav__menu--open') && 
-                !$(event.target).closest('.nav').length) {
-              $('.nav__toggle').trigger('click');
-            }
-          });
-          
-          // Close menu on window resize
-          $(window).on('resize', function() {
-            if (window.innerWidth > 768 && $('.nav__menu').hasClass('nav__menu--open')) {
-              $('.nav__menu').removeClass('nav__menu--open nav__menu--closing');
-              $('.nav__toggle-bar').removeClass('nav__toggle-bar--active');
-              $('body').removeClass('menu-open');
-            }
-          });
-        });
-      </script>
   </head>
   <body>
         <!-- En-tête avec navigation -->

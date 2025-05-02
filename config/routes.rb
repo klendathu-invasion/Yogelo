@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   get '/cours', to: "home#cours"
   get '/a-propos', to: "home#about"
   get '/contact', to: "home#contact"
+  post '/contact/create', to: "home#create_contact"
+  post '/reservation/create', to: "reservations#create"
+  get '/reservation/check_availability', to: "reservations#check_availability"
+  get '/reservation/check_day_status', to: 'reservations#check_day_status'
 end

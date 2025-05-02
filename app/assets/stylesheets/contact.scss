@@ -1,0 +1,336 @@
+@import "variables";
+
+/* app/assets/stylesheets/contact.scss */
+
+/* Section Hero de Contact */
+.contact-hero {
+  background-color: $main-green;
+  padding: 6rem 0;
+  color: $light-text;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '🧘‍♀️';
+    position: absolute;
+    font-size: 20rem;
+    opacity: 0.05;
+    right: 5%;
+    top: 10%;
+    transform: rotate(15deg);
+  }
+  
+  &__title {
+    font-size: 3.6rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    
+    @include responsive(medium) {
+      font-size: 4.2rem;
+    }
+  }
+  
+  &__subtitle {
+    font-size: 1.8rem;
+    max-width: 60rem;
+    margin: 0 auto;
+    
+    @include responsive(medium) {
+      font-size: 2rem;
+    }
+  }
+}
+
+/* Grille de la section Contact */
+.contact-main {
+  padding: 6rem 0;
+  background-color: $off-white;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  
+  @include responsive(medium) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6rem;
+  }
+}
+
+/* Styles du formulaire */
+.form {
+  background-color: $light-text;
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  
+  &-group {
+    margin-bottom: 2rem;
+  }
+  
+  &-label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: $dark-text;
+  }
+  
+  &-input,
+  &-select,
+  &-textarea {
+    width: 100%;
+    padding: 1.2rem;
+    border: 1px solid #e1e1e1;
+    border-radius: 0.5rem;
+    background-color: $off-white;
+    font-family: $font-main;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    
+    &:focus {
+      outline: none;
+      border-color: $main-green;
+      box-shadow: 0 0 0 3px rgba($main-green, 0.1);
+    }
+  }
+  
+  &-textarea {
+    resize: vertical;
+    min-height: 12rem;
+  }
+  
+  &-checkbox {
+    margin-right: 1rem;
+    
+    &-label {
+      font-size: 1.4rem;
+      color: rgba($dark-text, 0.8);
+    }
+  }
+  
+  &-policy {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  &-submit {
+    margin-top: 3rem;
+  }
+}
+
+/* Carte d'informations */
+.info-card {
+  background-color: $light-text;
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.info-item {
+  display: flex;
+  margin-bottom: 2.5rem;
+  
+  .info-icon {
+    flex-shrink: 0;
+    width: 5rem;
+    height: 5rem;
+    background-color: rgba($main-green, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.5rem;
+    color: $main-green;
+  }
+  
+  .info-content {
+    flex-grow: 1;
+  }
+  
+  .info-title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: $dark-text;
+    margin-bottom: 0.5rem;
+  }
+  
+  .info-text {
+    font-size: 1.5rem;
+    color: rgba($dark-text, 0.8);
+    line-height: 1.5;
+    
+    a {
+      color: $main-green;
+      transition: color 0.3s ease;
+      
+      &:hover {
+        color: $dark-green;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.social-links {
+  margin-top: 3rem;
+  
+  .info-title {
+    margin-bottom: 1.5rem;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    background-color: rgba($main-green, 0.1);
+    border-radius: 50%;
+    color: $main-green;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: $main-green;
+      color: $light-text;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+/* Horaires */
+.schedule-info {
+  margin-top: 3rem;
+  background-color: $light-text;
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  
+  .info-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $dark-text;
+    margin-bottom: 1.5rem;
+  }
+  
+  .schedule-list {
+    list-style: none;
+    
+    li {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba($dark-text, 0.1);
+      
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    
+    .day {
+      font-weight: 500;
+      color: $dark-text;
+      font-size: 1.5rem;
+    }
+    
+    .time {
+      color: $main-green;
+      font-weight: 500;
+      font-size: 1.5rem;
+    }
+  }
+  
+  .schedule-note {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed rgba($dark-text, 0.1);
+    font-size: 1.4rem;
+    color: rgba($dark-text, 0.7);
+    font-style: italic;
+  }
+}
+
+/* Section Carte */
+.map-section {
+  padding: 6rem 0;
+  background-color: $light-green;
+  
+  .section-title {
+    margin-bottom: 3rem;
+  }
+  
+  .map-container {
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    
+    iframe {
+      display: block;
+    }
+  }
+}
+
+/* Adaptation Mobile */
+@media(max-width: $bp-medium - 1px) {
+  .contact-hero {
+    padding: 5rem 0;
+    
+    &__title {
+      font-size: 3rem;
+    }
+    
+    &__subtitle {
+      font-size: 1.6rem;
+    }
+  }
+  
+  .contact-main {
+    padding: 4rem 0;
+  }
+  
+  .form {
+    padding: 2rem;
+  }
+  
+  .info-card, 
+  .schedule-info {
+    padding: 2rem;
+  }
+  
+  .info-item {
+    flex-direction: column;
+    
+    .info-icon {
+      margin-bottom: 1rem;
+      margin-right: 0;
+    }
+  }
+  
+  .map-section {
+    padding: 4rem 0;
+    
+    iframe {
+      height: 350px;
+    }
+  }
+}
+/* Message d'erreur général du formulaire */
+.form-error-message {
+  background-color: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+  text-align: center;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease;
+  transition: opacity 0.3s ease;
+}

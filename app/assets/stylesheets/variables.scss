@@ -1,0 +1,79 @@
+// Variables
+$main-green: #7A9978;
+$light-green: #CBDAC1;
+$dark-green: #5A7958;
+$off-white: #F5F5F5;
+$dark-text: #333333;
+$light-text: #FFFFFF;
+$font-main: 'Montserrat', sans-serif;
+
+// Breakpoints
+$bp-small: 576px;
+$bp-medium: 768px;
+$bp-large: 992px;
+$bp-xlarge: 1200px;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == small {
+    @media (min-width: $bp-small) {
+      @content;
+    }
+  }
+  @if $breakpoint == medium {
+    @media (min-width: $bp-medium) {
+      @content;
+    }
+  }
+  @if $breakpoint == large {
+    @media (min-width: $bp-large) {
+      @content;
+    }
+  }
+  @if $breakpoint == xlarge {
+    @media (min-width: $bp-xlarge) {
+      @content;
+    }
+  }
+}
+
+@mixin hover-effect {
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Mixins pour la disposition des cartes sur différents appareils
+@mixin card-grid-responsive {
+  display: grid;
+  grid-template-columns: minmax(28rem, 1fr);
+  justify-content: center;
+  gap: 3rem;
+  
+  @include responsive(small) {
+    grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+  }
+  
+  @include responsive(medium) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include responsive(large) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+  }
+}

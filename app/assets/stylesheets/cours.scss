@@ -1,0 +1,806 @@
+@import "variables";
+
+/* Suite des styles pour app/assets/stylesheets/cours.scss */
+
+/* app/assets/stylesheets/cours.scss */
+
+/* Section Hero de Cours */
+.cours-hero {
+  background-color: $main-green;
+  padding: 6rem 0;
+  color: $light-text;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '🧘‍♀️';
+    position: absolute;
+    font-size: 20rem;
+    opacity: 0.05;
+    right: 5%;
+    top: 10%;
+    transform: rotate(15deg);
+  }
+  
+  &__title {
+    font-size: 3.6rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    
+    @include responsive(medium) {
+      font-size: 4.2rem;
+    }
+  }
+  
+  &__subtitle {
+    font-size: 1.8rem;
+    max-width: 60rem;
+    margin: 0 auto;
+    
+    @include responsive(medium) {
+      font-size: 2rem;
+    }
+  }
+}
+
+/* Section d'introduction */
+.cours-intro {
+  padding: 5rem 0;
+  background-color: $off-white;
+  
+  &__content {
+    max-width: 80rem;
+    margin: 0 auto;
+    text-align: center;
+    
+    p {
+      font-size: 1.8rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+/* Cartes de cours */
+.cours-details {
+  padding: 6rem 0;
+  background-color: $light-text;
+}
+
+.cours-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  margin-top: 4rem;
+  
+  @include responsive(medium) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cours-card {
+  background-color: $off-white;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  &__image {
+    height: 25rem;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+  }
+  
+  &:hover &__image img {
+    transform: scale(1.05);
+  }
+  
+  &__content {
+    padding: 2.5rem;
+  }
+  
+  &__title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: $main-green;
+    margin: 1rem 0;
+  }
+  
+  &__description {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: $dark-text;
+  }
+  
+  &__details {
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+.cours-badge {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  background-color: rgba($main-green, 0.1);
+  color: $main-green;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  background-color: rgba($main-green, 0.05);
+  border-radius: 0.8rem;
+  
+  .detail-icon {
+    font-size: 2.4rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .detail-text {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: $dark-text;
+  }
+}
+
+/* Tarifs */
+.tarifs {
+  padding: 6rem 0;
+  background-color: $light-green;
+}
+
+.tarifs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-top: 4rem;
+  
+  @include responsive(small) {
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  }
+  
+  @include responsive(medium) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.tarif-card {
+  background-color: $light-text;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  &--featured {
+    background-color: $off-white;
+    border: 2px solid $main-green;
+    position: relative;
+    z-index: 1;
+    
+    &::before {
+      content: 'Populaire';
+      position: absolute;
+      top: 1.5rem;
+      right: -3.5rem;
+      background-color: $main-green;
+      color: $light-text;
+      padding: 0.5rem 4rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      transform: rotate(45deg);
+      z-index: 1;
+    }
+    
+    .tarif-card__header {
+      background-color: rgba($main-green, 0.1);
+    }
+  }
+  
+  &__header {
+    padding: 2.5rem;
+    text-align: center;
+    border-bottom: 1px solid rgba($dark-text, 0.1);
+  }
+  
+  &__title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $dark-text;
+    margin-bottom: 1rem;
+  }
+  
+  &__price {
+    font-size: 3.6rem;
+    font-weight: 700;
+    color: $main-green;
+    margin-bottom: 0.5rem;
+  }
+  
+  &__discount {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background-color: $dark-green;
+    color: $light-text;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 3rem;
+    margin-top: 0.5rem;
+  }
+  
+  &__content {
+    padding: 2.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  &__features {
+    list-style: none;
+    margin-bottom: 3rem;
+    flex-grow: 1;
+    
+    li {
+      position: relative;
+      padding-left: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      color: $dark-text;
+      
+      &::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: $main-green;
+        font-weight: 700;
+      }
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+/* Informations sur les cours */
+.cours-info {
+  padding: 6rem 0;
+  background-color: $off-white;
+  
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    
+    @include responsive(medium) {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+  
+  &__image {
+    width: 100%;
+    height: auto;
+    border-radius: 1.2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.info-item {
+  margin-bottom: 3rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  .info-title {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $main-green;
+    margin-bottom: 1rem;
+    
+    .info-icon {
+      margin-right: 1rem;
+      font-style: normal;
+    }
+  }
+  
+  p {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: $dark-text;
+  }
+}
+
+/* Section de réservation */
+.reservation {
+  padding: 6rem 0;
+  background-color: $light-text;
+}
+
+.reservation-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  margin-top: 4rem;
+  
+  @include responsive(medium) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Calendrier */
+.calendar-container {
+  background-color: $off-white;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: $main-green;
+  color: $light-text;
+}
+
+.calendar-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  background-color: rgba($light-text, 0.1);
+  border: none;
+  border-radius: 50%;
+  color: $light-text;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: rgba($light-text, 0.2);
+  }
+}
+
+/* Suite du calendrier */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  padding: 2rem;
+  
+  .day-name {
+    text-align: center;
+    font-weight: 600;
+    color: $dark-text;
+    font-size: 1.2rem;
+    padding: 1rem 0;
+    text-transform: uppercase;
+  }
+  
+  .day {
+    position: relative;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: $dark-text;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover:not(.inactive) {
+      background-color: rgba($main-green, 0.1);
+    }
+    
+    &.inactive {
+      color: #ccc;
+      cursor: default;
+    }
+    
+    &.has-class {
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0.8rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0.4rem;
+        height: 0.4rem;
+        background-color: $main-green;
+        border-radius: 50%;
+      }
+    }
+    
+    &.selected {
+      background-color: $main-green;
+      color: $light-text;
+      font-weight: 600;
+      
+      &::after {
+        background-color: $light-text;
+      }
+    }
+    
+    &.today {
+      border: 2px solid $main-green;
+      font-weight: 600;
+    }
+  }
+}
+
+/* Détails du calendrier */
+.calendar-details {
+  background-color: $off-white;
+  border-radius: 1.2rem;
+  padding: 2.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.selected-date-info {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  
+  p {
+    font-size: 1.7rem;
+    color: $dark-text;
+  }
+  
+  .date-display {
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: $main-green;
+    margin-top: 1rem;
+  }
+}
+
+.available-classes {
+  margin-bottom: 2.5rem;
+  
+  h4 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $dark-text;
+    margin-bottom: 1.5rem;
+  }
+  
+  &.hidden {
+    display: none;
+  }
+}
+
+.class-list {
+  list-style: none;
+  
+  li {
+    padding: 1.5rem;
+    background-color: $light-text;
+    border-radius: 0.8rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    &.selected {
+      border: 2px solid $main-green;
+    }
+    
+    .class-info {
+      display: flex;
+      flex-direction: column;
+      
+      .class-time {
+        font-size: 1.4rem;
+        color: $dark-text;
+      }
+      
+      .class-name {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: $main-green;
+      }
+    }
+    
+    .class-spots {
+      font-size: 1.3rem;
+      color: $dark-text;
+      background-color: rgba($main-green, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+    }
+  }
+}
+
+.booking-form {
+  &.hidden {
+    display: none;
+  }
+  
+  h4 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $dark-text;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* FAQ Section */
+.faq {
+  padding: 6rem 0;
+  background-color: $light-green;
+}
+
+.faq-list {
+  max-width: 80rem;
+  margin: 4rem auto 0;
+}
+
+.faq-item {
+  background-color: $light-text;
+  margin-bottom: 1.5rem;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.faq-question {
+  position: relative;
+  padding: 2rem 6rem 2rem 2rem;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: $dark-text;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: $main-green;
+  }
+  
+  .faq-icon {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2rem;
+    height: 2rem;
+    
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      background-color: $main-green;
+      transition: all 0.3s ease;
+    }
+    
+    &::before {
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      transform: translateY(-50%);
+    }
+    
+    &::after {
+      top: 0;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+      transform: translateX(-50%);
+    }
+  }
+  
+  &.active {
+    color: $main-green;
+    
+    .faq-icon::after {
+      transform: translateX(-50%) rotate(90deg);
+      opacity: 0;
+    }
+  }
+}
+
+.faq-answer {
+  padding: 0 2rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  
+  p {
+    padding-bottom: 2rem;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: $dark-text;
+  }
+}
+
+/* Styles pour le bouton de réservation */
+.btn--reserve {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+/* Adaptation mobile */
+@media (max-width: $bp-medium - 1px) {
+  .cours-hero {
+    padding: 5rem 0;
+    
+    &__title {
+      font-size: 3rem;
+    }
+    
+    &__subtitle {
+      font-size: 1.6rem;
+    }
+  }
+  
+  .cours-intro,
+  .cours-details,
+  .tarifs,
+  .cours-info,
+  .reservation,
+  .faq {
+    padding: 4rem 0;
+  }
+  
+  .cours-card {
+    &__image {
+      height: 20rem;
+    }
+    
+    &__details {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .calendar-grid {
+    padding: 1rem;
+    
+    .day {
+      height: 4rem;
+      font-size: 1.4rem;
+    }
+  }
+  
+  .calendar-header {
+    padding: 1.5rem;
+  }
+  
+  .calendar-details {
+    padding: 1.5rem;
+  }
+}
+
+/* Styles pour les cours inactifs (complets) */
+.class-list li.inactive {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #f8f8f8;
+  
+  &:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .class-spots {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+  }
+}
+
+/* Message pour aucun cours disponible */
+.no-classes {
+  text-align: center;
+  color: #7f8c8d;
+  font-style: italic;
+  margin-top: 2rem;
+}
+/* À ajouter dans cours.scss */
+
+/* Styles des jours du calendrier selon leur statut */
+.calendar-grid {
+  .day {
+    &.no-class {
+      background-color: rgba(0, 0, 0, 0.05);
+      cursor: default;
+      
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
+    
+    &.fully-booked {
+      background-color: rgba(231, 76, 60, 0.1);
+      
+      &:hover {
+        background-color: rgba(231, 76, 60, 0.15);
+      }
+      
+      &::after {
+        background-color: #e74c3c;
+      }
+    }
+  }
+}
+
+/* Styles pour les statuts de cours */
+.class-status {
+  font-size: 1.3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  
+  &.available {
+    background-color: rgba($main-green, 0.1);
+    color: $dark-green;
+  }
+  
+  &.reserved {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+  }
+}
+
+.class-description {
+  display: block;
+  font-size: 1.3rem;
+  color: rgba($dark-text, 0.7);
+  margin-top: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
