@@ -176,6 +176,7 @@ function checkAvailability(dateString) {
   const availableClasses = document.querySelector('.available-classes');
   const classList = document.querySelector('.class-list');
   const bookingForm = document.querySelector('.booking-form');
+  const calendarContainer = document.querySelector('.calendar-container'); // Ajoutez cette ligne
   
   // Afficher la date sélectionnée
   selectedDateInfo.innerHTML = `<p>Vérification des disponibilités...</p>`;
@@ -184,7 +185,10 @@ function checkAvailability(dateString) {
   availableClasses.classList.add('hidden');
   bookingForm.classList.add('hidden');
   
-  // Faire une requête AJAX pour vérifier les disponibilités détaillées
+  // S'assurer que le calendrier reste visible
+  calendarContainer.style.display = 'block'; // Ajoutez cette ligne
+  
+  // Faire une requête AJAX pour vérifier les disponibilités
   fetch(`/reservation/check_availability?date=${dateString}`)
     .then(response => {
       if (!response.ok) {

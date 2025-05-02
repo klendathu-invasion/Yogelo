@@ -208,68 +208,45 @@
     </div>
 </section>
 
+<!-- Modifiez la structure de la section de réservation -->
 <section class="reservation" id="reservation">
-    <div class="container">
-        <h2 class="section-title centered">Réservez votre cours</h2>
-        
-        <div class="reservation-grid">
-            <div class="calendar-container">
-                <div class="calendar-header">
-                    <button class="calendar-nav prev-month" aria-label="Mois précédent">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M15 18l-6-6 6-6"/>
-                        </svg>
-                    </button>
-                    <h3 class="calendar-title"></h3>
-                    <button class="calendar-nav next-month" aria-label="Mois suivant">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 18l6-6-6-6"/>
-                        </svg>
-                    </button>
-                </div>
-                <div class="calendar-grid"></div>
-            </div>
-            
-            <div class="calendar-details">
-                <div class="selected-date-info">
-                    <p>Sélectionnez une date pour voir les cours disponibles</p>
-                </div>
-                <div class="available-classes hidden">
-                    <h4>Cours disponibles :</h4>
-                    <ul class="class-list"></ul>
-                </div>
-                <div class="booking-form hidden">
-                    <h4>Réserver votre place</h4>
-                    <form id="booking-form">
-                        <input type="hidden" id="selected-date" name="selected_date">
-                        <input type="hidden" id="selected-class" name="selected_class">
-                        
-                        <div class="form-group">
-                            <label for="booking-name" class="form-label">Nom</label>
-                            <input type="text" id="booking-name" name="name" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="booking-email" class="form-label">Email</label>
-                            <input type="email" id="booking-email" name="email" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="booking-phone" class="form-label">Téléphone</label>
-                            <input type="tel" id="booking-phone" name="phone" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group form-policy">
-                            <input type="checkbox" id="booking-policy" name="policy" class="form-checkbox" required>
-                            <label for="booking-policy" class="form-checkbox-label">J'accepte que mes données soient traitées pour la réservation</label>
-                        </div>
-                        
-                        <button type="submit" class="btn btn--full">Confirmer la réservation</button>
-                    </form>
-                </div>
-            </div>
+  <div class="container">
+    <h2 class="section-title centered">Réservez votre cours</h2>
+    
+    <div class="reservation-grid">
+      <!-- Première colonne : calendrier -->
+      <div class="reservation-column calendar-column">
+        <div class="calendar-container">
+          <div class="calendar-header">
+            <button class="calendar-nav prev-month" aria-label="Mois précédent">
+              <!-- Icône SVG -->
+            </button>
+            <h3 class="calendar-title"></h3>
+            <button class="calendar-nav next-month" aria-label="Mois suivant">
+              <!-- Icône SVG -->
+            </button>
+          </div>
+          <div class="calendar-grid"></div>
         </div>
+      </div>
+      
+      <!-- Deuxième colonne : détails et formulaire -->
+      <div class="reservation-column details-column">
+        <div class="calendar-details">
+          <div class="selected-date-info">
+            <p>Sélectionnez une date pour voir les cours disponibles</p>
+          </div>
+          <div class="available-classes hidden">
+            <h4>Cours disponibles :</h4>
+            <ul class="class-list"></ul>
+          </div>
+          <div class="booking-form hidden">
+            <!-- Votre formulaire de réservation -->
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <section class="faq" id="faq">

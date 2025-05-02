@@ -802,5 +802,64 @@
   margin-top: 0.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+}
+
+/* Ajoutez ces styles à votre fichier CSS */
+
+/* Structure de la grille de réservation */
+.reservation-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+  gap: 2rem;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr; /* Deux colonnes à partir de 768px */
+    gap: 4rem;
+  }
+}
+
+/* Conteneur du calendrier - fixé pour qu'il reste visible */
+.calendar-container {
+  display: block; /* Assurez-vous qu'il est toujours visible */
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+/* Détails du calendrier - corrigé pour éviter le décalage */
+.calendar-details {
+  height: auto;
+  position: relative; /* Ajouté pour un meilleur positionnement */
+}
+
+/* Assurer que les sections internes restent correctement positionnées */
+.selected-date-info,
+.available-classes,
+.booking-form {
+  width: 100%;
+}
+
+/* Style pour les cours disponibles */
+.class-list li {
+  width: 100%; /* S'assurer que les éléments prennent toute la largeur */
+  box-sizing: border-box; /* Inclure padding et border dans la largeur */
+}
+
+/* Nouvelles classes pour la structure en colonnes */
+.reservation-column {
+  width: 100%;
+}
+
+.calendar-column {
+  order: 1; /* Apparaît en premier sur mobile */
+}
+
+.details-column {
+  order: 2; /* Apparaît en second sur mobile */
+}
+
+@media (min-width: 768px) {
+  .calendar-column, 
+  .details-column {
+    order: unset; /* Réinitialiser l'ordre sur desktop */
+  }
 }
