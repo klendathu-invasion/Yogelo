@@ -1065,3 +1065,191 @@ img {
     }
   }
 }
+
+
+/* Add these styles to app/assets/stylesheets/application.scss */
+
+/* Mobile Navigation Styles */
+.nav {
+  @include flex-between;
+  position: relative;
+  
+  &__logo {
+    display: block;
+    z-index: 1001; /* Above mobile menu */
+    
+    .logo {
+      width: 8rem;
+      height: auto;
+    }
+  }
+  
+  &__menu {
+    display: none;
+    list-style: none;
+    
+    @include responsive(medium) {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    /* Mobile menu styles */
+    &--open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba($main-green, 0.95);
+      z-index: 1000;
+      height: 100vh;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      animation: fadeIn 0.3s ease forwards;
+    }
+    
+    &--closing {
+      animation: fadeOut 0.3s ease forwards;
+    }
+  }
+  
+  &__item {
+    position: relative;
+    
+    .nav__menu--open & {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideInUp 0.4s ease forwards;
+      
+      @for $i from 1 through 5 {
+        &:nth-child(#{$i}) {
+          animation-delay: 0.1s * $i;
+        }
+      }
+    }
+  }
+  
+  &__link {
+    padding: 1rem;
+    font-weight: 500;
+    color: $dark-text;
+    transition: color 0.3s;
+    
+    &:hover {
+      color: $main-green;
+    }
+    
+    .nav__menu--open & {
+      color: $light-text;
+      font-size: 2.2rem;
+      padding: 1.5rem;
+      
+      &:hover {
+        color: $light-green;
+      }
+      
+      &--active {
+        color: $light-green;
+      }
+    }
+    
+    &--active {
+      color: $main-green;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 1rem;
+        width: calc(100% - 2rem);
+        height: 2px;
+        background-color: $main-green;
+      }
+      
+      .nav__menu--open &::after {
+        background-color: $light-green;
+      }
+    }
+  }
+  
+  &__toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 3rem;
+    height: 2.2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 1001; /* Above mobile menu */
+    
+    @include responsive(medium) {
+      display: none;
+    }
+    
+    &-bar {
+      width: 100%;
+      height: 3px;
+      background-color: $dark-text;
+      transition: transform 0.3s, opacity 0.3s;
+      
+      .nav__menu--open & {
+        background-color: $light-text;
+      }
+      
+      &--active {
+        &:nth-child(1) {
+          transform: translateY(9px) rotate(45deg);
+        }
+        
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        
+        &:nth-child(3) {
+          transform: translateY(-10px) rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+
+/* Animations for mobile menu */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Prevent scrolling when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
+}
