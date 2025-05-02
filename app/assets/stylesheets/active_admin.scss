@@ -1,0 +1,12 @@
+// app/assets/stylesheets/active_admin.scss (modifiez le fichier existant)
+$primary-color: #7A9978;  // Votre main-green
+$secondary-color: #5A7958; // Votre dark-green
+
+@import "active_admin/mixins";
+@import "active_admin/base";
+
+// Personnalisations supplémentaires ici
+.status_tag {
+  &.green { background: #7A9978; }
+  &.red { background: #e74c3c; }
+}

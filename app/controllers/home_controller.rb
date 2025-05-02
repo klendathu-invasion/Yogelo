@@ -11,6 +11,11 @@ class HomeController < ApplicationController
 
  	def create_contact
 		# Récupérer les paramètres du formulaire
+		if params[:website].present?
+		  # C'est probablement un bot
+		  render json: { status: "success", message: "Votre message a été envoyé avec succès." }
+		  return
+		end
 		@name = params[:name]
 		@email = params[:email]
 		@phone = params[:phone]

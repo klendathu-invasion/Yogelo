@@ -1,0 +1,28 @@
+<!-- app/views/admin/_bulk_reservation_form.html.erb -->
+<div class="panel">
+  <h3>Créer plusieurs créneaux de réservation vides</h3>
+  
+  <%= form_tag admin_bulkreservation_create_path, method: :post do %>
+    <div class="form-inputs">
+      <div class="input">
+        <label>Date</label>
+        <%= date_field_tag :date, Date.tomorrow, class: 'datepicker' %>
+      </div>
+      
+      <div class="input">
+        <label>Cours</label>
+        <%= select_tag :cours, options_for_select(Course.all.map { |c| [c.name, c.name] }), prompt: "Sélectionnez un cours" %>
+      </div>
+      
+      <div class="input">
+        <label>Nombre de réservations à créer</label>
+        <%= number_field_tag :count, 1, min: 1, max: 30 %>
+        <p class="inline-hints">Nombre de créneaux vides à créer pour ce cours à la date sélectionnée</p>
+      </div>
+    </div>
+    
+    <div class="actions">
+      <%= submit_tag "Créer des réservations", class: "button" %>
+    </div>
+  <% end %>
+</div>

@@ -13,6 +13,8 @@ gem 'sprockets-rails'
 # Use pg as the database for Active Record
 gem 'pg'
 gem 'sassc-rails'
+gem 'activeadmin'
+gem 'devise' # Si ce n'est pas déjà présent
 
 gem 'rest-client'
 # Use the Puma web server [https://github.com/puma/puma]

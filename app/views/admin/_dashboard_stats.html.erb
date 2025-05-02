@@ -1,0 +1,51 @@
+<!-- app/views/admin/_dashboard_stats.html.erb -->
+<div class="stats-container">
+  <div class="stat-item">
+    <span class="stat-value"><%= Reservation.where.not(status: nil).count %></span>
+    <span class="stat-label">Réservations totales</span>
+  </div>
+  
+  <div class="stat-item">
+    <span class="stat-value"><%= Reservation.where('date >= ?', Date.today).where.not(status: nil).count %></span>
+    <span class="stat-label">Réservations à venir</span>
+  </div>
+  
+  <div class="stat-item">
+    <span class="stat-value"><%= Reservation.where('date >= ?', Date.today).where(status: nil).count %></span>
+    <span class="stat-label">Créneaux disponibles</span>
+  </div>
+  
+  <div class="stat-item">
+    <span class="stat-value"><%= Course.count %></span>
+    <span class="stat-label">Types de cours</span>
+  </div>
+</div>
+
+<style>
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 15px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  width: 22%;
+}
+
+.stat-value {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  color: #5A7958;
+}
+
+.stat-label {
+  display: block;
+  margin-top: 5px;
+  color: #666;
+}
+</style>

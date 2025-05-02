@@ -2,15 +2,12 @@
 
 document.addEventListener('DOMContentLoaded', function() {
   initCalendar();
-  initReservationButtons();
 });
 
 // Réinitialiser après une navigation Turbo
 document.addEventListener('turbo:load', function() {
   initCalendar();
-  initReservationButtons();
 });
-
 // Données des cours (structure statique)
 const coursesData = {
   'Hatha Yoga': {
@@ -72,7 +69,6 @@ function initCalendar() {
     }
     generateCalendar(currentMonth, currentYear);
   });
-  
   // Générer le calendrier
 function generateCalendar(month, year) {
   // Vider le calendrier
@@ -223,14 +219,16 @@ function checkAvailability(dateString) {
         const courseElement = document.createElement('li');
         
         // Déterminer le statut à afficher
-        const statusText = courseData.available ? 'Disponible' : `Réservé par ${courseData.reserved_by}`;
+        const statusText = courseData.available ? 'Disponible' : `Réservé`;
         const statusClass = courseData.available ? 'available' : 'reserved';
-        
+        let course_aff = ""
+        if (courseData.available)
+          course_aff = courseData.description || ''
         courseElement.innerHTML = `
           <div class="class-info">
             <span class="class-time">${courseData.course_time} - ${calculateEndTime(courseData.course_time, courseData.duration)}</span>
             <span class="class-name">${course}</span>
-            <span class="class-description">${courseData.description || ''}</span>
+            <span class="class-description">${course_aff}</span>
           </div>
           <span class="class-status ${statusClass}">${statusText}</span>
         `;
@@ -280,24 +278,35 @@ function checkAvailability(dateString) {
     });
 }
   
-  // Initialiser le formulaire de réservation
+function initBookingForm() {
   const bookingForm = document.getElementById('booking-form');
+  
   if (bookingForm) {
-    bookingForm.addEventListener('submit', function(e) {
+    // Cloner et remplacer le formulaire pour supprimer les anciens écouteurs d'événements
+    const newForm = bookingForm.cloneNode(true);
+    bookingForm.parentNode.replaceChild(newForm, bookingForm);
+    
+    // Ajouter l'écouteur d'événements au nouveau formulaire
+    newForm.addEventListener('submit', function(e) {
       e.preventDefault();
       
-      // Récupérer les données du formulaire
-      const selectedDate = document.getElementById('selected-date').value;
-      const selectedClass = document.getElementById('selected-class').value;
-      const name = document.getElementById('booking-name').value;
-      const email = document.getElementById('booking-email').value;
-      const phone = document.getElementById('booking-phone').value;
+      // Désactiver le bouton pour éviter les soumissions multiples
+      const submitButton = newForm.querySelector('button[type="submit"]');
+      if (submitButton.disabled) {
+        return; // Éviter les soumissions multiples si le bouton est déjà désactivé
+      }
       
-      // Désactiver le bouton pendant la soumission
-      const submitButton = bookingForm.querySelector('button[type="submit"]');
       submitButton.disabled = true;
       submitButton.textContent = 'Réservation en cours...';
       
+      // Récupérer les données du formulaire
+      const selectedDate = document.getElementById('selected-date').value;
+      const selectedClass = document.getElementById('selected-class').value.split(" N°")[0];
+      const name = document.getElementById('booking-name').value;
+      const email = document.getElementById('booking-email').value;
+      const phone = document.getElementById('booking-phone').value;
+
+
       // Préparer les données pour l'envoi
       const formData = {
         reservation: {
@@ -308,7 +317,7 @@ function checkAvailability(dateString) {
           phone: phone
         }
       };
-      
+
       // Envoyer la requête AJAX
       fetch('/reservation/create', {
         method: 'POST',
@@ -326,12 +335,18 @@ function checkAvailability(dateString) {
       })
       .then(data => {
         // Réinitialiser le formulaire
-        bookingForm.reset();
+        newForm.reset();
         submitButton.disabled = false;
         submitButton.textContent = 'Confirmer la réservation';
         
         // Masquer le formulaire
-        bookingForm.classList.add('hidden');
+        document.querySelector('.booking-form').classList.add('hidden');
+        
+        // Supprimer tout message de succès précédent
+        const existingSuccess = document.querySelector('.booking-success');
+        if (existingSuccess) {
+          existingSuccess.remove();
+        }
         
         // Afficher un message de succès
         const successMessage = document.createElement('div');
@@ -351,8 +366,7 @@ function checkAvailability(dateString) {
         const selectedDay = document.querySelector('.day.selected');
         if (selectedDay) {
           const dateString = selectedDay.getAttribute('data-date');
-          const dayOfWeek = new Date(dateString).getDay();
-          checkAvailability(dateString, dayOfWeek);
+          checkAvailability(dateString);
         }
         
         // Supprimer le message après quelques secondes
@@ -368,11 +382,17 @@ function checkAvailability(dateString) {
         submitButton.disabled = false;
         submitButton.textContent = 'Confirmer la réservation';
         
+        // Supprimer tout message d'erreur précédent
+        const existingError = newForm.querySelector('.form-error-message');
+        if (existingError) {
+          existingError.remove();
+        }
+        
         // Afficher un message d'erreur
         const errorMessage = document.createElement('div');
         errorMessage.className = 'form-error-message';
         errorMessage.textContent = 'Une erreur est survenue lors de la réservation. Veuillez réessayer.';
-        bookingForm.appendChild(errorMessage);
+        newForm.appendChild(errorMessage);
         
         setTimeout(() => {
           errorMessage.remove();
@@ -444,37 +464,6 @@ function findNextAvailableDate(courseName) {
   }
 }
 
-// Initialiser la FAQ
-function initFAQ() {
-  const faqQuestions = document.querySelectorAll('.faq-question');
-  
-  faqQuestions.forEach(question => {
-    // Supprimer les anciens écouteurs (cloné et remplace)
-    const newQuestion = question.cloneNode(true);
-    question.parentNode.replaceChild(newQuestion, question);
-    
-    newQuestion.addEventListener('click', function() {
-      const answer = this.nextElementSibling;
-      const isActive = this.classList.contains('active');
-      
-      // Fermer toutes les réponses
-      document.querySelectorAll('.faq-answer').forEach(item => {
-        item.style.maxHeight = null;
-      });
-      
-      document.querySelectorAll('.faq-question').forEach(item => {
-        item.classList.remove('active');
-      });
-      
-      // Ouvrir/fermer cette réponse
-      if (!isActive) {
-        this.classList.add('active');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-      }
-    });
-  });
-}
-
 // Fonctions utilitaires
 function formatDate(date) {
   const year = date.getFullYear();
@@ -502,4 +491,8 @@ function calculateEndTime(startTime, durationMinutes) {
   endMinutes = String(endMinutes).padStart(2, '0');
   
   return `${endHours}:${endMinutes}`;
+}
+document.addEventListener('DOMContentLoaded', initBookingForm);
+document.addEventListener('turbo:load', initBookingForm);
+document.addEventListener('turbo:render', initBookingForm);
 }

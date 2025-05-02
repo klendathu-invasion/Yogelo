@@ -2,12 +2,11 @@ class ReservationsController < ApplicationController
   protect_from_forgery except: [:create, :check_availability]
   
   def create
-    @reservation = Reservation.new(reservation_params)
+    @reservation = Reservation.find_by(reservation_params)
     
     # Par défaut, attribuer le nom de l'utilisateur comme statut
-    @reservation.status = @reservation.name
     
-    if @reservation.save
+    if (@reservation.update(reservation_update_params.merge(status: params[:reservation][:name])) rescue false)
       render json: { 
         status: "success", 
         message: "Votre réservation a été confirmée!"
@@ -35,6 +34,7 @@ class ReservationsController < ApplicationController
       return render json: { availability: {} }
     end
     
+    i = 1
     # Parcourir toutes les réservations pour cette date
     reservations.each do |reservation|
       # Vérifier si un cours est spécifié
@@ -48,21 +48,22 @@ class ReservationsController < ApplicationController
       is_available = reservation.status.nil?
       
       # Ajouter les infos de disponibilité
-      availability[reservation.cours] = {
+      availability[reservation.cours + " N°" + String(i)] = {
       available: is_available,
       spots_available: is_available ? 1 : 0, # 1 place si disponible, 0 si occupé
       capacity: 1, # Chaque créneau est pour une personne
       course_time: course.start_time,
       duration: course.duration,
       description: course.description,
-      reserved_by: reservation.status # nil ou le nom du client
+      reserved_by: "" # nil ou le nom du client
       }
+      i = i + 1
     end
     
     render json: { availability: availability }
   end
   
-  
+
 	def check_day_status
 	  # Récupérer les paramètres
 	  date = params[:date]
@@ -84,7 +85,11 @@ class ReservationsController < ApplicationController
   private
   
   def reservation_params
-    params.require(:reservation).permit(:date, :cours, :name, :email, :phone)
+    params.require(:reservation).permit(:date, :cours)
+  end
+
+  def reservation_update_params
+    params.require(:reservation).permit(:name, :email, :phone)
   end
   
 end

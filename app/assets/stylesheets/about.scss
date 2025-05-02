@@ -1,1 +1,437 @@
 @import "variables";
+
+/* app/assets/stylesheets/about.scss */
+
+/* Section Hero de la page À propos */
+.about-hero {
+  background-color: $main-green;
+  padding: 6rem 0;
+  color: $light-text;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '🧘‍♀️';
+    position: absolute;
+    font-size: 20rem;
+    opacity: 0.05;
+    right: 5%;
+    top: 10%;
+    transform: rotate(15deg);
+  }
+  
+  &__title {
+    font-size: 3.6rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    
+    @include responsive(medium) {
+      font-size: 4.2rem;
+    }
+  }
+  
+  &__subtitle {
+    font-size: 1.8rem;
+    max-width: 80rem;
+    margin: 0 auto;
+    
+    @include responsive(medium) {
+      font-size: 2rem;
+    }
+  }
+}
+
+/* Section d'introduction */
+.about-intro {
+  padding: 5rem 0;
+  background-color: $off-white;
+  
+  &__content {
+    max-width: 80rem;
+    margin: 0 auto;
+    
+    p {
+      font-size: 1.8rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+/* Cartes des cours */
+.about-classes {
+  padding: 6rem 0;
+  background-color: $light-text;
+}
+
+.classes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  margin-top: 4rem;
+  
+  @include responsive(medium) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+}
+
+.class-card {
+  background-color: $off-white;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  &__image {
+    height: 25rem;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+  }
+  
+  &:hover &__image img {
+    transform: scale(1.05);
+  }
+  
+  &__content {
+    padding: 2.5rem;
+  }
+  
+  &__title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: $main-green;
+    margin-bottom: 1.5rem;
+  }
+  
+  &__description {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: $dark-text;
+  }
+}
+
+/* Section approche pédagogique */
+.about-approach {
+  padding: 6rem 0;
+  background-color: $light-green;
+}
+
+.approach-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-top: 4rem;
+  
+  @include responsive(small) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include responsive(large) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.approach-item {
+  background-color: $light-text;
+  padding: 3rem 2rem;
+  border-radius: 1.2rem;
+  text-align: center;
+  height: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.4s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+  
+  .approach-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.8rem;
+    color: $main-green;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  
+  p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: $dark-text;
+  }
+}
+
+/* Section parcours */
+.about-journey {
+  padding: 6rem 0;
+  background-color: $off-white;
+}
+
+.journey-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  
+  @include responsive(medium) {
+    grid-template-columns: 1fr 2fr;
+    align-items: start;
+  }
+}
+
+.journey-image {
+  img {
+    width: 100%;
+    max-width: 40rem;
+    height: auto;
+    border-radius: 1.2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+.journey-text {
+  p {
+    font-size: 1.7rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Section témoignages */
+.testimonials {
+  padding: 6rem 0;
+  background-color: $light-text;
+}
+
+.testimonials-intro {
+  text-align: center;
+  font-size: 1.8rem;
+  max-width: 70rem;
+  margin: 2rem auto 4rem;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  
+  @include responsive(small) {
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  }
+}
+
+.testimonial-card {
+  background-color: $off-white;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  position: relative;
+  
+  &::before {
+    content: '"';
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    font-size: 8rem;
+    font-family: Georgia, serif;
+    color: rgba($main-green, 0.1);
+    line-height: 1;
+  }
+}
+
+.testimonial-content {
+  padding: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-text {
+  font-size: 1.7rem;
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 2rem;
+  color: $dark-text;
+}
+
+.testimonial-author {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: $main-green;
+  
+  &::before {
+    content: '— ';
+  }
+}
+
+.testimonials-source {
+  text-align: center;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: rgba($dark-text, 0.7);
+}
+
+/* Section bienfaits */
+.benefits {
+  padding: 6rem 0;
+  background-color: $light-green;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-top: 4rem;
+  
+  @include responsive(medium) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.benefit-item {
+  background-color: $light-text;
+  padding: 3rem;
+  border-radius: 1.2rem;
+  height: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  
+  .benefit-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  h3 {
+    font-size: 2rem;
+    color: $main-green;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+  }
+}
+
+.benefit-list {
+  list-style-type: none;
+  
+  li {
+    position: relative;
+    padding-left: 2.5rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    
+    &::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: $main-green;
+      font-weight: 700;
+    }
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Section appel à l'action */
+.cta-section {
+  padding: 8rem 0;
+  background-color: $main-green;
+  color: $light-text;
+  text-align: center;
+}
+
+.cta-content {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-size: 3.2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  
+  @include responsive(medium) {
+    font-size: 3.6rem;
+  }
+}
+
+.cta-text {
+  font-size: 1.8rem;
+  margin-bottom: 3rem;
+  
+  @include responsive(medium) {
+    font-size: 2rem;
+  }
+}
+
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  
+  @include responsive(small) {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .btn {
+    min-width: 20rem;
+  }
+  
+  .btn--outline {
+    background-color: transparent;
+    border: 2px solid $light-text;
+    color: $light-text;
+    
+    &:hover {
+      background-color: rgba($light-text, 0.1);
+    }
+  }
+}
+
+/* Adaptation mobile */
+@media (max-width: $bp-medium - 1px) {
+  .about-hero,
+  .about-intro,
+  .about-classes,
+  .about-approach,
+  .about-journey,
+  .testimonials,
+  .benefits,
+  .cta-section {
+    padding: 4rem 0;
+  }
+  
+  .class-card__image {
+    height: 20rem;
+  }
+}
