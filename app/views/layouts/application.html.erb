@@ -1,35 +1,170 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <title>Yogelo</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Meta tags SEO améliorées -->
+      <meta name="description" content="Love Yoga - Cours de yoga à Toulouse dans un cocon de bienveillance avec un professeur certifié Yoga Alliance 250h. Retrouvez équilibre, confiance et bien-être.">
+      <meta name="keywords" content="yoga toulouse, cours de yoga, bien-être, équilibre, confiance, yoga alliance, professeur yoga">
+      <meta name="author" content="Love Yoga">
+      <meta name="robots" content="index, follow">
+      
+      <!-- Open Graph pour partage sur réseaux sociaux -->
+      <meta property="og:title" content="Love Yoga - Cours de yoga à Toulouse">
+      <meta property="og:description" content="Retrouvez l'équilibre, la confiance et le bien-être grâce au Yoga dans un cocon de bienveillance à Toulouse.">
+      <meta property="og:image" content="images/og-image-elo.jpg">
+      <meta property="og:url" content="https://elo-yoga.fr">
+      <meta property="og:type" content="website">
+      
+      <title>Love Yoga - Cours de yoga à Toulouse | Équilibre et bien-être</title>
+      
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-    <script type="text/javascript">
-      $(document).on('click', 'a[href^="#"]', function (event) {
-          event.preventDefault();
+      <!-- Préchargement des polices et ressources -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+      
+      <!-- Favicon -->
+      <link rel="icon" href="images/favicon.ico">
+      <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+      
+      <!-- Lien vers le CSS compilé -->
 
-          $('html, body').animate({
-              scrollTop: $($.attr(this, 'href')).offset().top
-          }, 9500);
-      });
-    </script>
+      <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+      <%= javascript_importmap_tags %>
+      
+      <!-- Schema.org markup pour Google -->
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Love Yoga",
+        "image": "images/logo-elo.png",
+        "description": "Cours de yoga à Toulouse dans un cocon de bienveillance avec un professeur certifié Yoga Alliance 250h.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Toulouse",
+          "addressRegion": "Occitanie",
+          "addressCountry": "FR"
+        },
+        "telephone": "0662891808",
+        "url": "https://elo-yoga.fr",
+        "priceRange": "€€",
+        "openingHours": "Mo-Fr 09:00-20:00"
+      }
+      </script>
   </head>
-
   <body>
-    <div class="menu">
-      <ul>
-        <li class="home"><%= link_to "MON PARCOURS", "#home" %></li>
-        <li><%= link_to "COURS", "#cours" %></li>
-        <li><%= link_to "LE YOGA", "#yoga" %></li>
-        <li><%= link_to "PLANNING", "#planning" %></li>
+        <!-- En-tête avec navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="nav__logo">
+                    <img src="/images/logo-elo.png" alt="Logo Love Yoga" class="logo" width="100" height="100">
+                </a>
+                
+                <% home_active = params[:action] == "index" ? "nav__link--active" : "" %>
+                <% cours_active = params[:action] == "cours" ? "nav__link--active" : "" %>
+                <% about_active = params[:action] == "about" ? "nav__link--active" : "" %>
+                <% contact_active = params[:action] == "contact" ? "nav__link--active" : "" %>
 
-      </ul>
-    </div>
-
+                <ul class="nav__menu">
+                    <li class="nav__item"><a href="/" class="nav__link <%= home_active %>">Accueil</a></li>
+                    <li class="nav__item"><a href="/cours" class="nav__link <%= cours_active %>">Cours</a></li>
+                    <li class="nav__item"><a href="/a-propos" class="nav__link <%= about_active %>">À propos</a></li>
+                    <li class="nav__item"><a href="/contact" class="nav__link <%= contact_active %>">Contact</a></li>
+                </ul>
+                
+                <button class="nav__toggle" aria-label="Menu de navigation">
+                    <span class="nav__toggle-bar"></span>
+                    <span class="nav__toggle-bar"></span>
+                    <span class="nav__toggle-bar"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
     <%= yield %>
+        <!-- Footer amélioré -->
+    <footer class="footer">
+        <div class="footer__decoration"></div>
+        
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__info">
+                    <a href="/" class="footer__logo-link">
+                        <img src="/images/logo-elo.png" alt="Logo Love Yoga" class="footer__logo" width="120" height="120">
+                    </a>
+                    <p class="footer__text">Love Yoga - Cours de yoga à Toulouse dans un cocon de bienveillance avec un professeur certifié Yoga Alliance 250h.</p>
+                    <p class="footer__tagline">Un espace de douceur pour se retrouver et s'apaiser</p>
+                </div>
+                
+                <div class="footer__links">
+                    <h3 class="footer__heading">Navigation</h3>
+                    <ul class="footer__nav">
+                        <li><a href="/">Accueil</a></li>
+                        <li><a href="/cours">Cours</a></li>
+                        <li><a href="/a-propos">À propos</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__contact">
+                    <h3 class="footer__heading">Contact</h3>
+                    <div class="contact-item">
+                        <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        <a href="tel:+33662891808">06.62.89.18.08</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <a href="mailto:contact@elo-yoga.fr">contact@elo-yoga.fr</a>
+                    </div>
+                    
+                    <h3 class="footer__heading social-heading">Suivez-moi</h3>
+                    <div class="footer__social">
+                        <a href="mailto:contact@elo-yoga.fr" class="social-icon" aria-label="Email">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/elo.lebulot/" class="social-icon" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M22 12C22 6.477 17.523 2 12 2S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.877v-6.988h-2.54v-2.889h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.889h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/elodie_sirignano/" class="social-icon" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                              <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <div class="footer__line"></div>
+                <div class="footer__bottom-content">
+                    <p class="footer__copyright">© 2025 Love Yoga - Tous droits réservés.</p>
+                    <p class="footer__credit">Site réalisé par <a href="https://pamara.cat" target="_blank" rel="noopener">Melissa Grach</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <button id="back-to-top" class="back-to-top" aria-label="Retour en haut de page">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19V5M5 12l7-7 7 7"/>
+            </svg>
+        </button>
+    </footer>
   </body>
 </html>
