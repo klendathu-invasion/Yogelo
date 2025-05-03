@@ -3,6 +3,15 @@ class HomeController < ApplicationController
 	def index
 	end
 	def cours
+		@weekdays = ['Lundi', 'Mardi', 'Jeudi', 'Vendredi']
+    
+	    # Create a hash to store courses for each day
+	    @courses_by_day = {}
+	    
+	    # Populate the hash with courses for each day
+	    @weekdays.each do |day|
+	      @courses_by_day[day] = Course.published_for_day(day)
+	    end
 	end
 	def about
 	end

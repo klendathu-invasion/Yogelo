@@ -1,0 +1,180 @@
+@import "variables";
+
+/* app/assets/stylesheets/calendar.scss */
+
+/* Calendar Hero Section */
+.calendar-hero {
+  background-color: $main-green;
+  padding: 6rem 0;
+  color: $light-text;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '🧘‍♀️';
+    position: absolute;
+    font-size: 20rem;
+    opacity: 0.05;
+    right: 5%;
+    top: 10%;
+    transform: rotate(15deg);
+  }
+  
+  &__title {
+    font-size: 3.6rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    
+    @include responsive(medium) {
+      font-size: 4.2rem;
+    }
+  }
+  
+  &__subtitle {
+    font-size: 1.8rem;
+    max-width: 60rem;
+    margin: 0 auto;
+    
+    @include responsive(medium) {
+      font-size: 2rem;
+    }
+  }
+}
+
+/* Weekly Calendar */
+.weekly-calendar {
+  padding: 5rem 0;
+  background-color: $off-white;
+  
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    
+    @include responsive(medium) {
+      flex-direction: row;
+      align-items: stretch;
+    }
+  }
+}
+
+/* Day Column */
+.day-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: $light-text;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Day Header */
+.day-header {
+  background-color: $main-green;
+  color: $light-text;
+  padding: 1.5rem;
+  text-align: center;
+  
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+  }
+}
+
+/* Day Content */
+.day-content {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Course Card */
+.course-card {
+  padding: 1.5rem;
+  background-color: rgba($light-green, 0.2);
+  border-radius: 0.8rem;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-3px);
+  }
+  
+  .course-time {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $main-green;
+    margin-bottom: 0.5rem;
+  }
+  
+  .course-name {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  
+  .course-duration {
+    font-size: 1.4rem;
+    color: rgba($dark-text, 0.7);
+    margin-bottom: 1rem;
+  }
+  
+  .course-description {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .btn {
+    align-self: flex-start;
+  }
+}
+
+/* No Courses Message */
+.no-courses {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+  
+  p {
+    font-size: 1.5rem;
+    color: rgba($dark-text, 0.6);
+    font-style: italic;
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: $bp-medium - 1px) {
+  .weekly-calendar {
+    padding: 3rem 0;
+  }
+  
+  .weekly-calendar__grid {
+    gap: 2rem;
+  }
+  
+  .day-column {
+    min-height: auto;
+  }
+  
+  .day-content {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+}

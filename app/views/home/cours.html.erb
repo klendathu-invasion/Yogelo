@@ -16,6 +16,7 @@
     </div>
 </section>
 
+
 <section class="cours-details" id="details">
     <div class="container">
         <h2 class="section-title centered">Détail des cours</h2>
@@ -128,6 +129,43 @@
     </div>
 </section>
 
+<!-- app/views/home/calendar.html.erb -->
+<section class="calendar-hero">
+  <div class="container">
+    <h1 class="calendar-hero__title">Semaine type</h1>
+    <p class="calendar-hero__subtitle">Voici nos cours principaux au cours de la semaine</p>
+  </div>
+</section>
+<section class="weekly-calendar">
+  <div class="container">
+    <div class="weekly-calendar__grid">
+      <% @weekdays.each do |day| %>
+        <div class="day-column">
+          <div class="day-header">
+            <h2><%= day %></h2>
+          </div>
+          <div class="day-content">
+            <% if @courses_by_day[day].any? %>
+              <% @courses_by_day[day].each do |course| %>
+                <div class="course-card">
+                  <div class="course-time"><%= course.start_time %></div>
+                  <div class="course-name"><%= course.name %></div>
+                  <div class="course-duration"><%= course.duration %> min</div>
+                  <div class="course-description"><%= course.description %></div>
+                  <a href="/cours#reservation" class="btn btn--small">Reservez</a>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="no-courses">
+                <p>Pas de cours ce jour</p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
 <section class="tarifs" id="tarifs">
     <div class="container">
         <h2 class="section-title centered">Nos formules</h2>
@@ -181,6 +219,22 @@
         </div>
     </div>
 </section>
+
+
+
+
+<!-- <section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2 class="cta-title">Ready to join a class?</h2>
+      <p class="cta-text">Book your spot today and start your yoga journey!</p>
+      <div class="cta-buttons">
+        <a href="/cours" class="btn">View All Classes</a>
+        <a href="/contact" class="btn btn--outline">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section> -->
 
 <section class="cours-info">
     <div class="container">
