@@ -24,7 +24,7 @@ jobs:
     - name: 'Create env file'
       run: |
         touch .env
-        echo RAILS_ENV=production >> .env
+        echo RAILS_ENV=development >> .env
     - name: scp the .env
       run: scp .env ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/docker_klendathu/poke_api
     - name: connect and pull
