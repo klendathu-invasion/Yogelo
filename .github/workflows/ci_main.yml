@@ -26,8 +26,8 @@ jobs:
         touch .env
         echo RAILS_ENV=development >> .env
     - name: scp the .env
-      run: scp .env ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/docker_klendathu/poke_api
+      run: scp .env ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/docker_klendathu/Yogelo
     - name: connect and pull
-      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "/home/docker_klendathu/script/reload_service.sh -b main -d poke_api"
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "/home/docker_klendathu/script/reload_service.sh -b main -d Yogelo"
     - name: cleanup
       run: rm -rf ~/.ssh
