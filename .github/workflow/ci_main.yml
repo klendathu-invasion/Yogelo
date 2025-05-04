@@ -1,0 +1,33 @@
+# This workflow uses actions that are not certified by GitHub.  They are
+# provided by a third-party and are governed by separate terms of service,
+# privacy policy, and support documentation.
+#
+# This workflow will install a prebuilt Ruby version, install dependencies, and
+# run tests and linters.
+name: "Ruby on Rails CI"
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  run_pull:
+    name: run pull
+    runs-on: ubuntu-latest
+    # needs: [test, lint]
+    steps:
+    - name: install ssh keys
+      # check this thread to understand why its needed:
+      # https://stackoverflow.com/a/70447517
+      run: |
+        install -m 600 -D /dev/null ~/.ssh/id_rsa
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+    - name: 'Create env file'
+      run: |
+        touch .env
+        echo RAILS_ENV=production >> .env
+    - name: scp the .env
+      run: scp .env ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/docker_klendathu/poke_api
+    - name: connect and pull
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "/home/docker_klendathu/script/reload_service.sh -b main -d poke_api"
+    - name: cleanup
+      run: rm -rf ~/.ssh
