@@ -132,7 +132,7 @@
 <!-- app/views/home/calendar.html.erb -->
 <section class="calendar-hero">
   <div class="container">
-    <h1 class="calendar-hero__title">Semaine type</h1>
+    <h1 class="calendar-hero__title">Planning</h1>
     <p class="calendar-hero__subtitle">Voici nos cours principaux au cours de la semaine</p>
   </div>
 </section>
@@ -168,13 +168,28 @@
 </section>
 <section class="tarifs" id="tarifs">
     <div class="container">
-        <h2 class="section-title centered">Nos formules</h2>
+        <h2 class="section-title centered">Formules</h2>
         
         <div class="tarifs-grid">
+
+            <div class="tarif-card">
+                <div class="tarif-card__header">
+                    <h3 class="tarif-card__title">Cours d'essai</h3>
+                    <p class="tarif-card__price">10€</p>
+                </div>
+                <div class="tarif-card__content">
+                    <ul class="tarif-card__features">
+                        <li>Limité à 1 / personne</li>
+                        <li>Réservation 24h à l'avance</li>
+                        <li>Sans engagement</li>
+                    </ul>
+                    <a href="#reservation" class="btn">Réserver un cours</a>
+                </div>
+            </div>
             <div class="tarif-card">
                 <div class="tarif-card__header">
                     <h3 class="tarif-card__title">Cours à l'unité</h3>
-                    <p class="tarif-card__price">15€</p>
+                    <p class="tarif-card__price">20€</p>
                 </div>
                 <div class="tarif-card__content">
                     <ul class="tarif-card__features">
@@ -188,8 +203,24 @@
             
             <div class="tarif-card tarif-card--featured">
                 <div class="tarif-card__header">
+                    <h3 class="tarif-card__title">Carte 5 cours</h3>
+                    <p class="tarif-card__price">90€</p>
+                    <p class="tarif-card__discount">Économisez 10€</p>
+                </div>
+                <div class="tarif-card__content">
+                    <ul class="tarif-card__features">
+                        <li>Valable 2 mois</li>
+                        <li>Accès prioritaire aux réservations</li>
+                        <li>1 cours offert avec un(e) ami(e)</li>
+                    </ul>
+                    <a href="/contact" class="btn">Nous contacter</a>
+                </div>
+            </div>
+
+            <div class="tarif-card tarif-card--featured">
+                <div class="tarif-card__header">
                     <h3 class="tarif-card__title">Carte 10 cours</h3>
-                    <p class="tarif-card__price">120€</p>
+                    <p class="tarif-card__price">170€</p>
                     <p class="tarif-card__discount">Économisez 30€</p>
                 </div>
                 <div class="tarif-card__content">
@@ -243,11 +274,11 @@
                 <h2 class="section-title centered">Ce que vous devez savoir</h2>
                 <div class="info-item" style="display: block;">
                     <h3 class="info-title"><i class="info-icon">🧘‍♀️</i> Équipement</h3>
-                    <p>Apportez votre tapis de yoga si vous en avez un. Quelques tapis sont disponibles en prêt. Portez des vêtements confortables qui permettent de bouger librement.</p>
+                    <p>Tout le matériel est fourni. Portez des vêtements confortables qui permettent de bouger librement. Pensez à prendre une gourde.</p>
                 </div>
                 <div class="info-item" style="display: block;">
                     <h3 class="info-title"><i class="info-icon">🕐</i> Ponctualité</h3>
-                    <p>Merci d'arriver 10 minutes avant le début du cours. Pour le respect de tous, les retardataires ne pourront pas être admis au-delà de 5 minutes après le début.</p>
+                    <p>Merci d'arriver 5 minutes avant le début du cours. Pour le respect de tous, les retardataires ne pourront pas être admis au-delà de 5 minutes après le début.</p>
                 </div>
                 <div class="info-item" style="display: block;">
                     <h3 class="info-title"><i class="info-icon">🚫</i> Annulation</h3>
